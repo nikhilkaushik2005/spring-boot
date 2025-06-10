@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style type="text/css">
+    /* General Page Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Form Container */
+.form-container {
+    background: white;
+    width: 40%;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+}
+
+.save-btn:hover {
+    background: #218838;
+}
+
+.cancel-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background: #c82333;
+}
+    
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Employee Details</h2>
+        
+        <form th:action="@{/employees/save}" th:object="${employee}" method="post">
+            <div class="form-group">
+                <label>Employee Code:</label>
+                <input type="text" th:field="*{employeeCode}" required />
+            </div>
+
+            <div class="form-group">
+                <label>Employee Name:</label>
+                <input type="text" th:field="*{employeeName}" required />
+            </div>
+
+            <div class="form-group">
+                <label>Address:</label>
+                <textarea th:field="*{address}" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Employee DOB:</label>
+                <input type="date" th:field="*{dateOfBirth}" required />
+            </div>
+
+            <div class="form-group">
+                <label>Employee Phone No:</label>
+                <input type="text" th:field="*{phoneNo}" required />
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn save-btn">Save</button>
+                <a href="/employees" class="btn cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
