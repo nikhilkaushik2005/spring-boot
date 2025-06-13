@@ -3,7 +3,7 @@ name: Build and Deploy Docker
 on:
   push:
     branches:
-      - main
+      - main  # or your deployment branch
 
 jobs:
   build-and-deploy:
@@ -29,12 +29,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t springapp .
+        run: docker build -t springboot-app .
 
       - name: Tag and Push Docker Image
         run: |
-          docker tag springapp nikhil874/springapp:latest
-          docker push nikhil874/springapp:latest
+          docker tag springboot-app ${{ secrets.DOCKER_USERNAME }}/springboot-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/springboot-app:latest
 
-      - name: Run Docker Compose (optional)
-        run: docker-compose up -d
