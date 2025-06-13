@@ -35,4 +35,8 @@ jobs:
         run: |
           docker tag springboot-app ${{ secrets.DOCKER_USERNAME }}/springboot-app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/springboot-app:latest
+          
+      - name: Run Docker Container
+        run: |
+          docker run -d -p 9000:9000 --name running-app ${{ secrets.DOCKER_USERNAME }}/springboot-app:latest
 
