@@ -1,0 +1,18 @@
+task---
+
+
+1] push your springboot project to github 
+2] learn github action
+    - what is github action
+    - why we use this
+    - how it will work
+3] learn github action script [how to write]
+4] write githubaction of your spingboot project onces change code and push github cicd will run your project and deploy 
+
+github cicd steps
+----------
+
+step1: build project[mvn clean package]
+step2: docker build images using docker file
+step3: docker-compose down
+step4: docker-compose up -d

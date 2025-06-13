@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres-db
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: bashdb
+      POSTGRES_USER: DataDBA
+      POSTGRES_PASSWORD: DataDBA@123
+    volumes:
+      - C:\backup:/var/lib/postgresql/data
+
+  springboot:
+    build: .
+    container_name: springboot-app
+    restart: always
+    ports:
+      - "9000:9000"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bashdb
+      SPRING_DATASOURCE_USERNAME: DataDBA
+      SPRING_DATASOURCE_PASSWORD: DataDBA@123
+
+volumes:
+  postgres_data:
