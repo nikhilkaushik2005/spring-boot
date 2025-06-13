@@ -1,5 +1,5 @@
 FROM openjdk:17-jdk-slim
-MAINTAINER "maheshgowdag29@gmail.com"
+
 WORKDIR /app
 COPY ./target/*.jar app.jar
 
